@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+    <title>GoodData JS Project Template</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+</head>
+<body class="app" bgcolor="#ffffff" style="display:block">
+
+    <div id="root" class="app"></div>
+    <h1>GoodData JS Project Template</h1>
+
+    <!-- Dendencies of your project can be specified here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="gooddata.js"></script>
+   <script>
+ 
+var projectId = 'n4qgebtg809vbi573dvat2s28rizwkm0',
+    user = "cfeigenbutz+analyticsimpl@eab.com",
+    passwd = "";
+var elements = ['label.admittedstudents.admitpooldate','abktNe8sdXqU','ac5Is1a5c2XM','ab7Fhy76d591'];
+
+// Show login info
+$('body').append('<div class="login-loader">Logging in...</div>');
+
+var sdk = gooddata.factory({ domain: 'https://reportsimpl.eabanalytics.com' });
+    sdk.user.login(user, passwd).then(function(){
+        alert('logged in')
+    });
+    
+        $('div.login-loader').remove();
+        $('body').append('<div class="loading">Logged in...ready to your next command</div>');
+    
+    sdk.execution.getData(projectId, elements).then(function(dataResult) {
+        console.log(dataResult);
+        console.log(JSON.stringify(dataResult));
+        console.log(dataResult);
+
+                var data = dataResult.rawData;
+console.log(data);
+      
+            $('div.loading').remove();
+    })
+    </script>
+
+    </body>
+</html>
